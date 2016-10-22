@@ -10,7 +10,7 @@ sed -i 's/^max_execution_time.*$/max_execution_time = 18000/g' /etc/php.ini
 if [ ! -h /etc/supervisord.d/server.ini ]
 then
     # Web Server Switch
-    if [ "$WEB_SRV" == "httpd" -o "$WEB_SRV" == "apache" ]
+    if [ "$WEB_SERVER" == "httpd" -o "$WEB_SERVER" == "apache" ]
     then
         ln -s /etc/supervisord.d/httpd.ini.sample /etc/supervisord.d/server.ini
     else
