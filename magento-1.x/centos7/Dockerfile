@@ -1,6 +1,6 @@
 FROM centos:7
 
-MAINTAINER Engin Terzi <me@enginterzi.com>
+MAINTAINER Engin Terzi <https://github.com/enginterzi>
 
 #Add the NGINX repository
 # ref: http://nginx.org/en/linux_packages.html
@@ -45,6 +45,7 @@ COPY etc/nginx/default.conf /etc/nginx/conf.d/default.conf
 
 # PHP-FPM configuration
 COPY etc/php-fpm/www.conf /etc/php-fpm.d/www.conf
+COPY etc/php-fpm/php-fpm.conf /etc/php-fpm.conf
 
 # Development xdebug configuration
 COPY etc/xdbug/xdebug.ini /etc/php.d/xdebug.ini
