@@ -1,0 +1,17 @@
+#!/usr/bin/with-contenv sh
+
+# Init setup
+sed -i 's/^display_errors.*$/display_errors = On/g' /etc/php5/php.ini
+sed -i 's/^memory_limit.*$/memory_limit = 768M/g' /etc/php5/php.ini
+sed -i 's/^max_execution_time.*$/max_execution_time = 18000/g' /etc/php5/php.ini
+
+# Xdebug Switch
+if [ "$XDEBUG_RHOST" ]
+then
+    sed -i "s/^\;zend_extension/zend_extension/g" /etc/php5/conf.d/xdebug.ini
+    sed -i "s/^\;xdebug/xdebug/g" /etc/php5/conf.d/xdebug.ini
+    sed -i "s/^xdebug.remote_host.*/xdebug.remote_host=$XDEBUG_RHOST/g" /etc/php5/conf.d/xdebug.ini
+else
+    sed -i "s/^zend_extension/\;zend_extension/g" /etc/php5/conf.d/xdebug.ini
+    sed -i "s/^xdebug/\;xdebug/g" /etc/php5/conf.d/xdebug.ini
+fi
